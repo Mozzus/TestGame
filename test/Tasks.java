@@ -3,19 +3,17 @@ package com.test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tasks {
+ class Tasks {
     private static List<String> zadaniya = new ArrayList<>();
+    private static int number = 0;
 
-    public static void addTask(String task) {
+    static void addTask(String task) {
         System.out.println("@Добавлено новое задание");
         zadaniya.add(task);
     }
 
-    public static void showTasks () {
-        int number = 1;
-        for (String x : zadaniya) {
-            number+=1;
-            System.out.println(number + ". " + x);
-        }
+    static void showTasks () {
+        zadaniya.forEach(x -> System.out.println((number+=1) + ". " + x));
+        number = 0;
     }
 }

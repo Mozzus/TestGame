@@ -7,19 +7,21 @@ import com.test.units.Unit;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Location implements Management {
     public String name;
     public static int state = 0;
     private int number = 0;
-    List<Hero> heroes = new ArrayList<>();
+    Set<Hero> heroes = new HashSet<>();
 
     public abstract void scopePlace() throws IOException;
     public abstract void intoPlace () throws IOException;
     public abstract void toLocation() throws IOException;
     public abstract void addHero();
-    public Location getLocation() throws  IOException {
+    public Location getLocation() {
         return this;
     }
 
@@ -37,6 +39,7 @@ public abstract class Location implements Management {
             System.out.println("Здесь не с кем поговорить");
             manage(Game.hero, this);
         }
+        number = 0;
     }
 
     public static void info () {
@@ -50,7 +53,8 @@ public abstract class Location implements Management {
                 "\n2. Справка или Как играть - отображает Правила и игровые команды" +
                 "\n3. Обзор или Что вижу? - отображает информацию о текущей локации" +
                 "\n4. и - отображает инвентарь" +
-                "\n4. надеть - надеть элемент инвентаря" +
-                "\n4. снять - снять элемент инвентаря");
+                "\n5. надеть - надеть элемент инвентаря" +
+                "\n6. снять - снять элемент инвентаря" +
+                "\n7. з - обзор текущих заданий");
     }
 }

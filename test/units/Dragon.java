@@ -1,7 +1,5 @@
 package com.test.units;
 
-import java.util.List;
-
 public class Dragon extends Unit {
     public Dragon () {
         setHealth(20);

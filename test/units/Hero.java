@@ -1,8 +1,11 @@
 package com.test.units;
 
+import com.test.Game;
 import com.test.Locations.Location;
 
 import java.io.IOException;
+
+import static com.test.Game.hero;
 
 public class Hero extends Unit {
     public static Location heroLocation;
@@ -32,23 +35,24 @@ public class Hero extends Unit {
 
     private void increaseLevel() {
         System.out.println("*-Повышение уровня-*");
-        setLevel(getLevel() + 1);
-        switch (this.getLevel()) {
-            case 2 : defenceRate+=10; setPower(2); setMaxHealth(7);
+        hero.setLevel(hero.getLevel() + 1);
+        switch (hero.getLevel()) {
+            case 2 : hero.defenceRate+=10; hero.setPower(2); hero.setMaxHealth(7);
                 break;
-            case 3 : defenceRate+=7; setPower(3); setMaxHealth(10);
+            case 3 : hero.defenceRate+=7; hero.setPower(3); hero.setMaxHealth(10);
                 break;
-            case 4 : defenceRate+=5; setPower(4); setMaxHealth(12);
+            case 4 : hero.defenceRate+=5; hero.setPower(4); hero.setMaxHealth(12);
                 break;
         }
     }
 
     public void changeState () {
-        if (getExperience() > 50 && getExperience() < 100 && getLevel() == 1) increaseLevel();
-        else if (getExperience() >= 100 && getExperience() < 200 && getLevel() == 2) increaseLevel();
+        if (hero.getExperience() > 50 && hero.getExperience() < 100 && hero.getLevel() == 1) increaseLevel();
+        else if (hero.getExperience() >= 100 && getExperience() < 200 && hero.getLevel() == 2) increaseLevel();
+        else if (hero.getExperience() >= 200 && getExperience() < 350 && hero.getLevel() == 3) increaseLevel();
     }
 
-    public Location getHeroLocation() throws IOException {
+    public Location getHeroLocation() {
         return heroLocation.getLocation();
     }
 

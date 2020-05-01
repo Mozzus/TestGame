@@ -15,6 +15,7 @@ import static com.test.PlayStory.battle;
 
 public interface Management {
     Dialog dialog = new Dialog();
+
     default void manage (Unit unit, Location location) throws IOException {
         hero.changeState();
         BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
@@ -57,7 +58,7 @@ public interface Management {
             }
             else if (act.contains("выйти")) act = "16";
             else if (act.contains("назад")|| act.contains("вернуться")) act = "17";
-            else if (act.contains("задания")) act = "18";
+            else if (act.equals("з")) act = "18";
         }
         switch (act) {
             case "1" :
