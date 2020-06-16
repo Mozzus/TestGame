@@ -1,18 +1,13 @@
 package com.test.Locations;
 
 import com.test.Game;
-import com.test.Inventory;
 import com.test.Management;
 import com.test.units.Hero;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Village extends Location implements Management {
     private static final Village instance = new Village();
-    private static int history = 0;
-    private static int shag = 0;
     public static Hero chester = new Hero("Честер");
 
     public static Village getInstance() {
@@ -21,6 +16,7 @@ public class Village extends Location implements Management {
 
     private Village() {
         name = "Деревня";
+        addingHistory();
     }
 
     @Override
@@ -40,29 +36,14 @@ public class Village extends Location implements Management {
     }
 
     @Override
-    public void intoPlace() throws IOException {
-        switch (history) {
-            case 0:
-                System.out.println("Вы проходите несколько домов но не находите ничего интересного");
-                history = 1;
-                manage(Game.hero, this);
-                break;
-            case 1:
-                System.out.println("Эх, вы ходите кругом по деревне, но здесь как было кисло и пусто, так и осталось, " +
-                        "\nно тут вдруг, вы замечаете сундук в кустах за колодцем");
-                history = 3;
-                manage(Game.hero, this);
-                break;
-            case 3:
-                System.out.println("Вы открыли сундук");
-                Inventory.addToInventory(Inventory.sword);
-                manage(Game.hero, this);
-                break;
-        }
+    public void addHero() {
+        heroes.add(chester);
     }
 
     @Override
-    public void addHero() {
-        heroes.add(chester);
+    void addingHistory() {
+        addStory("Вы проходите несколько домов но не находите ничего интересного", Game.hero, generalStory);
+        addStory("Эх, вы ходите кругом по деревне, но здесь как было кисло и пусто, так и осталось, " +
+                "\nно тут вдруг, вы замечаете сундук в кустах за колодцем", Game.hero, generalStory);
     }
 }

@@ -9,6 +9,7 @@ import java.util.Set;
 public abstract class Unit implements Combat {
     private int health;
     private int maxHealth;
+    public boolean isEnemy;
 
     public String name;
     private int level = 1;
@@ -73,6 +74,10 @@ public abstract class Unit implements Combat {
 
     public int getLevel() {
         return level;
+    }
+
+    public void setEnemy(boolean enemy) {
+        isEnemy = enemy;
     }
 
     public abstract int givingExp();

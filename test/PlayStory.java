@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class PlayStory {
     private static boolean  win = false;
-    public static List<Unit> startGame () {
+    public static void startGame () {
 
         Stream.iterate(1, n -> {
             try {
@@ -22,7 +22,6 @@ public class PlayStory {
             return n + 1;
         }).filter(n -> win).limit(1).forEach(System.out::println);
 
-        return new ArrayList<>();
     }
 
     public static void igraGo() throws IOException {

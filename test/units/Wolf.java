@@ -6,7 +6,7 @@ public class Wolf extends Unit {
         setHealth(4);
         id.add((long)(Math.random()*1000000));
         name = "Волк";
-
+        isEnemy = true;
     }
 
     @Override

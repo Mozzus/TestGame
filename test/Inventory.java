@@ -18,6 +18,7 @@ public class Inventory {
         System.out.println(item.getName() + " добавлен в ваш инвентарь");
         myInventory.add(item);
     }
+
     public static void showMyInventory () {
         System.out.println("Ваш инвентарь:");
         if (myInventory.isEmpty()) System.out.println("Там ничего нет");
@@ -75,5 +76,10 @@ public class Inventory {
                         takeOffItem(what);
                     }
         }
+    }
+
+    public static void openCrate (Item item) {
+        System.out.println("Вы открыли сундук");
+        Inventory.addToInventory(item);
     }
 }

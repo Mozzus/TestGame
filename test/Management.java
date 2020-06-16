@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 
 import static com.test.Game.hero;
 import static com.test.Inventory.showMyInventory;
+import static com.test.Inventory.sword;
 import static com.test.Locations.Location.info;
 import static com.test.PlayStory.battle;
 
@@ -42,7 +43,7 @@ public interface Management {
             else if (act.contains("идти") || act.contains("дальше") || act.contains("вперед")) act = "9";
             else if (act.contains("инфо")) act = "10";
             else if (act.contains("арена") || act.contains("арену")) act = "11";
-            else if (act.contains("открыть")|| act.contains("сундук")) act = "9";
+            else if (act.contains("открыть")|| act.contains("сундук")) act = "19";
             else if (act.contains("чаща лес") || act.contains("чащу лес") || act.contains("чащу")
             ||act.contains("чаща") ||act.contains("сойти с дороги") ||act.equals("сойти")) act = "13";
             else if (act.equals("и")) act = "14";
@@ -119,7 +120,7 @@ public interface Management {
                 location.scopePlace();
                 break;
             case "9" :
-                location.intoPlace();
+                location.intoPlace(hero.getHeroLocation().generalStory);
                 break;
             case "10" :
                 hero.info();
@@ -140,8 +141,7 @@ public interface Management {
                 break;
             case "13" :
                 System.out.println("Вы направляетесь в глушь, деревьев много и слышны звуки зверей");
-                Forest.history = 6;
-                location.intoPlace();
+                location.intoPlace(hero.getHeroLocation().generalStory);
                 break;
             case "14" :
                 showMyInventory();
@@ -160,6 +160,10 @@ public interface Management {
                 Tasks.showTasks();
                 manage(hero, hero.getHeroLocation());
                 break;
+            case "19" :
+                Inventory.openCrate(sword);
+                manage(hero, hero.getHeroLocation());
+                break;
             default:
                 System.out.println("Не ясно что вы хотите, повторите команду");
                 manage(unit, location);
@@ -176,7 +180,8 @@ public interface Management {
         }
         catch (NumberFormatException e) {
             if (act.contains("привет")) act = "0";
-            else if (act.contains("задание") || act.contains("задания") || act.contains("помощь")) act = "1";
+            else if (act.contains("задание") || act.contains("задания") || act.contains("помощь")
+                    || act.contains("проблем")) act = "1";
             else if (act.contains("новости") || act.contains("слухи") || act.contains("что слышно")) act = "2";
             else if (act.contains("место") || act.contains("местах") || act.contains("месте")) act = "3";
             else if (act.contains("пока") || act.contains("завершить")) act = "4";

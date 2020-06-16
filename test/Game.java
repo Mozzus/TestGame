@@ -4,7 +4,6 @@ import com.test.Locations.Location;
 import com.test.units.Dragon;
 import com.test.units.Hero;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
